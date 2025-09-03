@@ -1,0 +1,8 @@
+- tag: "【发售/延期】"
+  keywords: ["release", "launch", "launches", "delayed", "delay", "postponed", "out now", "coming"]
+- tag: "【更新/补丁】"
+  keywords: ["update", "patch", "version", "dlc", "season", "hotfix"]
+- tag: "【电竞】"
+  keywords: ["esports", "tournament", "league", "championship", "match", "roster", "team"]
+- tag: "【行业/资本】"
+  keywords: ["acquire", "acquisition", "merger", "funding", "investment", "revenue", "earnings", "IPO", "market"]

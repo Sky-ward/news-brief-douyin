@@ -1,16 +1,19 @@
 from __future__ import annotations
-from typing import List, Dict, Any
+
 from datetime import datetime
+from typing import Any, Dict, List
+
 from zoneinfo import ZoneInfo
 
 JST = ZoneInfo("Asia/Tokyo")
 
 HEADER_TMPL = "1) 今日游戏资讯简报（JST 日期：{date})\n"
 
+
 def render_brief(items: List[Dict[str, Any]]) -> str:
     today = datetime.now(JST).strftime("%Y-%m-%d")
     lines = [HEADER_TMPL.format(date=today)]
-    for idx, it in enumerate(items, start=1):
+    for it in items:
         prefix = "【突发】" if it.get("is_breaking") else ""
         line = (
             f"- {prefix}{it['summary_zh']} "
@@ -21,16 +24,23 @@ def render_brief(items: List[Dict[str, Any]]) -> str:
         lines.append(line)
     return "\n".join(lines)
 
-def pick_top_for_tiktok(items: List[Dict[str, Any]], n: int = 4) -> List[Dict[str, Any]]:
+
+def pick_top_for_tiktok(
+    items: List[Dict[str, Any]], n: int = 4
+) -> List[Dict[str, Any]]:
     # choose breaking first, then score
     breakings = [it for it in items if it.get("is_breaking")]
     rest = [it for it in items if not it.get("is_breaking")]
     top = breakings[:n] + rest[: max(0, n - len(breakings))]
     return top[:n]
 
+
 def render_tiktok(items: List[Dict[str, Any]]) -> str:
     top4 = pick_top_for_tiktok(items, 4)
-    today_kw = "、".join([it.get("tag","【国际】").strip("【】") for it in top4][:3]) or "全球要闻"
+    today_kw = (
+        "、".join([it.get("tag", "【国际】").strip("【】") for it in top4][:3])
+        or "全球要闻"
+    )
     lines = []
     lines.append("2) 抖音短视频逐字稿（45–60 秒）\n")
     # Hook
@@ -55,9 +65,12 @@ def render_tiktok(items: List[Dict[str, Any]]) -> str:
     lines.append("屏幕大字：关注｜收藏\n")
     # Extras
     lines.append("封面标题（≤14字）：今日游戏资讯速览")
-    lines.append("视频说明/Caption（≤80字）：一分钟看游戏圈：精选主机、PC、手游与电竞动态，更多详见来源。")
+    lines.append(
+        "视频说明/Caption（≤80字）：一分钟看游戏圈：精选主机、PC、手游与电竞动态，更多详见来源。"
+    )
     lines.append("话题标签：#游戏资讯 #主机游戏 #PC游戏 #手游 #电竞")
     return "\n".join(lines)
+
 
 def render_sources(items: List[Dict[str, Any]]) -> str:
     seen = set()
