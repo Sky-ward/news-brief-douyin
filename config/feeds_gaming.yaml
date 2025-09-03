@@ -1,0 +1,42 @@
+- name: IGN
+  url: https://feeds.ign.com/ign/all
+  enabled: true
+- name: GameSpot
+  url: https://www.gamespot.com/feeds/news/
+  enabled: true
+- name: Polygon
+  url: https://www.polygon.com/rss/index.xml
+  enabled: true
+- name: Eurogamer
+  url: https://www.eurogamer.net/feed
+  enabled: true
+- name: PC Gamer
+  url: https://www.pcgamer.com/rss/
+  enabled: true
+- name: Rock Paper Shotgun
+  url: https://www.rockpapershotgun.com/feed
+  enabled: true
+- name: The Verge Games
+  url: https://www.theverge.com/games/rss/index.xml
+  enabled: true
+- name: Dot Esports
+  url: https://dotesports.com/feed
+  enabled: true
+- name: HLTV
+  url: https://www.hltv.org/rss/news
+  enabled: true
+- name: PlayStation Blog
+  url: https://blog.playstation.com/feed/
+  enabled: true
+- name: Xbox Wire
+  url: https://news.xbox.com/en-us/feed/
+  enabled: true
+- name: Nintendo News
+  url: https://www.nintendo.com/whatsnew/feed
+  enabled: true
+- name: Steam News
+  url: https://store.steampowered.com/feeds/news.xml
+  enabled: true
+- name: PocketGamer.biz
+  url: https://www.pocketgamer.biz/rss/
+  enabled: true
